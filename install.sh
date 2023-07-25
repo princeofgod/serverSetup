@@ -11,8 +11,8 @@ apt-get update
 
 # Install MySQL (MariaDB) and set the root password
 echo "Installing mysql ..."
-debconf-set-selections <<< 'mysql-server mysql-server/password password password'
-debconf-set-selections <<< 'mysql-server mysql-server/password password'
+debconf-set-selections <<< 'mysql-server mysql-server/zyonel4321 password zyonel4321'
+debconf-set-selections <<< 'mysql-server mysql-server/zyonel4321 password zyonel4321'
 apt-get install -y mysql-server
 
 # Check if MySQL (MariaDB) installation was successful
