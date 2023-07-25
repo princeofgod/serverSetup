@@ -15,28 +15,6 @@ debconf-set-selections <<< 'mysql-server mysql-server/zyonel4321 password zyonel
 debconf-set-selections <<< 'mysql-server mysql-server/zyonel4321 password zyonel4321'
 apt-get install -y mysql-server
 
-# Check if MySQL (MariaDB) installation was successful
-if systemctl is-active --quiet mysql; then
-  echo "MySQL (MariaDB) installed successfully."
-
-  # Secure MySQL installation
-  mysql_secure_installation <<EOF
-
-y
-password
-password
-y
-y
-y
-y
-EOF
-
-  echo "MySQL (MariaDB) installation secured."
-
-else
-  echo "Failed to install MySQL (MariaDB)."
-  exit 1
-fi
 
 # Install Nginx
 echo "Installing nginx ..."
