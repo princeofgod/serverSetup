@@ -9,35 +9,6 @@ fi
 # Update package lists
 apt-get update
 
-# Install MySQL (MariaDB) and set the root password
-echo "Installing mysql ..."
-debconf-set-selections <<< 'mysql-server mysql-server/zyonel4321 password zyonel4321'
-debconf-set-selections <<< 'mysql-server mysql-server/zyonel4321 password zyonel4321'
-apt-get install -y mysql-server
-
-# Check if MySQL (MariaDB) installation was successful
-if systemctl is-active --quiet mysql; then
-  echo "MySQL (MariaDB) installed successfully."
-
-  # Secure MySQL installation
-  mysql_secure_installation <<EOF
-
-y
-password
-password
-y
-y
-y
-y
-EOF
-
-  echo "MySQL (MariaDB) installation secured."
-
-else
-  echo "Failed to install MySQL (MariaDB)."
-  exit 1
-fi
-
 # Install Nginx
 echo "Installing nginx ..."
 apt-get install -y nginx
@@ -52,10 +23,10 @@ fi
 
 # Install PHP and required extensions
 echo "Installing php ..."
-apt-get install -y php8.0-fpm php8.0-mysql
+apt-get install -y php8.1-fpm php8.1-mysql
 
 # Check if PHP installation was successful
-if systemctl is-active --quiet php8.0-fpm; then
+if systemctl is-active --quiet php8.1-fpm; then
   echo "PHP installed successfully."
 else
   echo "Failed to install PHP."
