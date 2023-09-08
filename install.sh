@@ -61,3 +61,22 @@ systemctl restart nginx
 
 echo "LEMP stack installation completed successfully with PHP 8.0 and MySQL (MariaDB)."
 
+# Update package list
+sudo apt update
+
+
+# Install required package
+sudo apt install php-cli unzip
+
+
+# Install composer
+cd ~
+curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+
+HASH=`curl -sS https://composer.github.io/installer.sig`
+
+sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+
+echo "Composer install ..."
+exit
