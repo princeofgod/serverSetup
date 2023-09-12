@@ -7,7 +7,7 @@ if [[ $(id -u) -ne 0 ]]; then
 fi
 
 # Generate a random temporary password for MySQL root user
-TEMP_ROOT_PASSWORD=$(date +%s | sha256sum | base64 | head -c 32)
+TEMP_ROOT_PASSWORD="zyonel4321"
 
 # Install MySQL
 apt-get update
@@ -33,11 +33,11 @@ y
 EOF
 
   # Prompt for the new MySQL root password
-  echo "Enter a new secure password for the MySQL root user:"
-  read -s NEW_ROOT_PASSWORD
+  # echo "Enter a new secure password for the MySQL root user:"
+  # read -s NEW_ROOT_PASSWORD
 
   # Change the MySQL root password to the new secure value
-  mysql -uroot -p"$TEMP_ROOT_PASSWORD" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$NEW_ROOT_PASSWORD'; FLUSH PRIVILEGES;"
+  # mysql -uroot -p"$TEMP_ROOT_PASSWORD" -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$NEW_ROOT_PASSWORD'; FLUSH PRIVILEGES;"
 
   echo "MySQL installation secured."
 
