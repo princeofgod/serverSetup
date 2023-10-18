@@ -66,7 +66,8 @@ sudo apt update
 
 
 # Install required package
-sudo apt install php-cli unzip
+# sudo apt install php-cli unzip
+sudo apt-get install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath unzip
 
 
 # Install composer
