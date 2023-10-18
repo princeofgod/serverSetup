@@ -6,21 +6,6 @@ if [[ $(id -u) -ne 0 ]]; then
   exit 1
 fi
 
-# Update package lists
-apt-get update
-
-# Install Nginx
-echo "Installing nginx ..."
-apt-get install -y nginx
-
-# Check if Nginx installation was successful
-if systemctl is-active --quiet nginx; then
-  echo "Nginx installed successfully."
-else
-  echo "Failed to install Nginx."
-  exit 1
-fi
-
 # Install PHP and required extensions
 echo "Installing php ..."
 apt-get install -y php8.1-fpm php8.1-mysql
@@ -32,38 +17,6 @@ else
   echo "Failed to install PHP."
   exit 1
 fi
-
-# Configure Nginx to use PHP
-echo "setting up nginx ..."
-cat > /etc/nginx/sites-available/default <<EOF
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-    index index.php index.html index.htm;
-
-    server_name _;
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
-    }
-}
-EOF
-
-# Restart Nginx to apply the configuration
-systemctl restart nginx
-
-echo "LEMP stack installation completed successfully with PHP 8.0 and MySQL (MariaDB)."
-
-# Update package list
-sudo apt update
-
 
 # Install required package
 # sudo apt install php-cli unzip
@@ -80,4 +33,21 @@ sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=compose
 
 
 echo "Composer install ..."
+
+
+
+# clone project
+cd /var/www
+
+read -p "Enter the git url for the project: " giturl
+# read -p "Enter the name of the folder you want to clone to: " folder_name
+sudo git clone $giturl $nginx_file_name
+cd $nginx_file_name
+
+sudo git checkout master
+
+sudo composer install --ignore-platform-reqs
+
+sudo nano .env
+
 exit
