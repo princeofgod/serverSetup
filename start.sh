@@ -12,7 +12,7 @@ then
 elif [[ "$app_type" == "2" ]] 
 then
     echo "running the nodejs script..."
-    cd node
+    source node/nginx.sh
 else
     echo "provided response is invalid, please select between 1 and 2"
     exit 1
