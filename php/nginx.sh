@@ -60,6 +60,6 @@ echo "LEMP stack installation completed successfully with PHP 8.0 and MySQL (Mar
 # Update package list
 sudo apt update
 
-source php_setup.sh
+source ./php_setup.sh
 
 

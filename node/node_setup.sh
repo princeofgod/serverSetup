@@ -20,6 +20,8 @@ sudo apt-get install nodejs -y
 # clone project
 cd /var/www
 
+pwd
+
 read -p "Enter the git url for the project: " giturl
 read -p "Enter the name of the folder you want to clone to: " folder_name
 sudo git clone $giturl $folder_name
