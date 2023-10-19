@@ -68,4 +68,3 @@ then
 #     echo "New app setup done..."
 fi
 
-done
