@@ -7,14 +7,14 @@ read -p "Is this a fresh install? (yes / no) " install_type
 
 
 
-# if [[ "$app_type" != 1 ]]
+if [[ "$app_type" = "1" ]]
 
-if [[ "$app_type" == "1" ]] && [[ "install_type" == "yes" ]];
+# if [[ "$app_type" == "1" ]] && [[ "install_type" == "yes" ]];
 then 
     echo "running the php script..."
     source php/nginx.sh
-
-elif [[ "$app_type" == "2" ]] && [[ "install_type" == "yes" ]];
+elif [[ "$app_type" == "2" ]]
+# elif [[ "$app_type" == "2" ]] && [[ "install_type" == "yes" ]];
 then
     echo "running the nodejs script..."
     source node/nginx.sh
