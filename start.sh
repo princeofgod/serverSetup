@@ -66,9 +66,6 @@ then
     
 #     # 
 #     echo "New app setup done..."
-else
-    echo "provided response is invalid, please select between 1 and 2"
-    exit 1
 fi
 
 done
