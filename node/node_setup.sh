@@ -35,11 +35,19 @@ sudo npm i pm2@latest -g
 
 read -p "What stack is this? (1 = frontend, 2 = backend): " stack
 
-if [[ "$stack" == "2" ]] then
+if [[ "$stack" == "2" ]];
+then
 # create env
-sudo nano config.env
+    sudo nano config.env
+else
+    sudo npm run build
+    sudo pm2 start --name=$folder_name npm -- start -- --port=3000
+    sudo pm2 startup
+    sudo pm2 save
 fi
 
+echo "setup done."
+exit
 
 
 

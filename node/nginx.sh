@@ -36,10 +36,10 @@ server {
   location / {
     proxy_pass http://localhost:3000;
     proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection 'upgrade';
     proxy_set_header Host $host;
-    proxy_cache_bypass $http_upgrade;
+    proxy_cache_bypass \$http_upgrade;
   }
 }
 EOF
@@ -54,5 +54,5 @@ echo "LEMP stack installation completed successfully with PHP 8.0 and MySQL (Mar
 # Update package list
 sudo apt update
 
-source node_setup.sh
+source node/node_setup.sh
 
