@@ -42,10 +42,12 @@ cd /var/www
 read -p "Enter the git url for the project: " giturl
 # read -p "Enter the name of the folder you want to clone to: " folder_name
 sudo git clone $giturl $nginx_file_name
-echo pwd
+pwd
 cd $nginx_file_name
 
-sudo git checkout master
+read -p "Enter the git branch for checkout: " branch
+
+sudo git checkout $branch
 
 sudo composer install --ignore-platform-reqs
 
